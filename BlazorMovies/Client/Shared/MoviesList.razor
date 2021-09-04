@@ -1,0 +1,49 @@
+﻿<div>
+    <h3>Movie</h3>
+
+
+    @if (movies == null)
+    {
+        <text>Loading</text>
+    }
+    else if (movies.Count == 0)
+    {
+        <text>There are no movies to show.</text>
+    }
+    else
+    {
+        @foreach (var movie in movies)
+        {
+            <p>Title :@((MarkupString)movie.Title) </p>
+            <p>Release Date: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b>  </p>
+        }
+    }
+
+</div>
+
+@code{
+    List<Movie> movies;
+    //wihout casting to markup string html markup is not rendered
+    protected override void OnInitialized()
+    {
+
+        movies = new List<Movie>()
+    {
+            new Movie
+            {
+                Title="<b>Spider-Man: No Way Home</b>",
+                ReleaseDate=new DateTime(2021,11,7)
+            },
+            new Movie
+            {
+                Title="<i>Iron-Man 4</i>",
+                ReleaseDate=new DateTime(2021,11,8)
+            },
+            new Movie
+            {
+                Title="Avenger 5",
+                ReleaseDate=new DateTime(2021,11,9)
+            }
+        };
+    }
+}
