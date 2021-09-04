@@ -2,19 +2,26 @@
 
 <div>
     <h3>Movie</h3>
-    @if (movies != null)
+    
+    
+    @if (movies == null)
+    { 
+        <text>Loading</text>
+    }
+    else
     {
         @foreach (var movie in movies)
-        {
-            <p>Title : <b>@movie.Title</b>  </p>
+         {
+            <p>Title :@((MarkupString)movie.Title) </p>
             <p>Release Date: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b>  </p>
-        }
+         }
     }
 
 </div>
 
 @code{
     List<Movie> movies;
+    //whiout casting to markup string html markup is not rendered
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(3000);
@@ -23,12 +30,12 @@
         {
             new Movie
             {
-                Title="Spider-Man: No Way Home",
+                Title="<b>Spider-Man: No Way Home</b>",
                 ReleaseDate=new DateTime(2021,11,7)
             },
             new Movie
             {
-                Title="Iron-Man 4",
+                Title="<i>Iron-Man 4</i>",
                 ReleaseDate=new DateTime(2021,11,8)
             },
             new Movie
