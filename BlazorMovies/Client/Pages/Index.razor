@@ -1,16 +1,13 @@
 ﻿@page "/"
 
-<p>Hello, @CustomerToLower(name) </p>
+<p>Hello, @StringUtilites.CustomerToLower(name) </p>
 <p>Add 2 + 2 =@(2+2) </p>
 
-@*<button @onclick="@(()=>Console.WriteLine("Clicked"))">Click Me!!</button>*@
-<button @onclick="@WriteInLog()">Click Me!!</button>
+
 @code{
     string name = "Paras";
-    string CustomerToLower(string Value) => Value.ToLower();
-
-    void WriteInLog()
+    public class StringUtilites
     {
-        Console.WriteLine("Clicked");
+        public static string CustomerToLower(string Value) => Value.ToLower();
     }
 }
