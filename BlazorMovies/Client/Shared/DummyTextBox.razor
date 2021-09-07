@@ -1,5 +1,7 @@
 ﻿
-<input type="text" @attributes="AdditionalParameters" />
+<input type="text" placeholder="Default" @attributes="AdditionalParameters" />
+<input type="text" @attributes="AdditionalParameters" placeholder="Default" />
+@* attribute in last applied is applied last so has heigher specificity  *@
 
 @code {
     [Parameter(CaptureUnmatchedValues = true)]
