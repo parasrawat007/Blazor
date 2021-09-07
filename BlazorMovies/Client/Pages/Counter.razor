@@ -8,7 +8,10 @@
 
 <MoviesList Movies="movies"/>
 
-<DummyTextBox placeholder="Movie"/>
+<DummyTextBox @attributes="@(new Dictionary<string, object>() {
+                                {"placeholder","Movie Name" },
+                                {"Disabled",true}
+                            })"/>
 
 @code {
     private int currentCount = 0;
